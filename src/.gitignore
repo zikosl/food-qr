@@ -23,6 +23,7 @@ storage/debugbar
 public/js/app.js
 
 public/js
+public/file
 public/js/*
 package-lock.json
 _ide_helper.php
