@@ -22,12 +22,10 @@ RUN apk add --no-cache \
     && apk del autoconf g++ make libtool \
     && rm -rf /var/cache/apk/* /tmp/pear
 
-# Create Laravel user
-RUN addgroup -g 1000 laravel && \
-    adduser -G laravel -g laravel -s /bin/sh -D laravel
+
 
 # Create working directory
-RUN mkdir -p /var/www/html && chown -R laravel:laravel /var/www/html
+RUN mkdir -p /var/www/html 
 
 # Copy configuration files
 COPY ./docker/php/www.conf /usr/local/etc/php-fpm.d/www.conf
@@ -38,9 +36,7 @@ COPY ./src/ /var/www/html
 
 WORKDIR /var/www/html
 
-RUN chown -R laravel:laravel /var/www/html
 
-USER laravel
 
 EXPOSE 9000
 
